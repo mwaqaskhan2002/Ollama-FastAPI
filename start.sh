@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define the URL to download ollama.exe from GitHub
-OLLAMA_URL="https://github.com/mwaqaskhan2002/Ollama-FastAPI/releases/download/v0.4.4/ollama.linux"
+OLLAMA_URL="https://github.com/mwaqaskhan2002/Ollama-FastAPI/releases/download/v0.4.4/ollama"
 
 # Download ollama.exe if it doesn't exist
 if [ ! -f "ollama" ]; then
