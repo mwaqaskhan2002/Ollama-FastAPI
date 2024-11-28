@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # Define the URL to download ollama.exe from GitHub
-OLLAMA_URL="https://github.com/mwaqaskhan2002/Ollama-FastAPI/releases/download/v0.4.4/ollama.exe"
+wget "https://github.com/mwaqaskhan2002/Ollama-FastAPI/releases/download/v0.4.4/ollama.exe"
 
 # Download ollama.exe if it doesn't exist
 if [ ! -f "ollama.exe" ]; then
   echo "Downloading ollama.exe..."
   curl -L -o ollama.exe $OLLAMA_URL
-fi
+
 
 # Start Ollama server
 echo "Starting Ollama server..."
