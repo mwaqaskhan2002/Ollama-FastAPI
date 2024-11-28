@@ -1,24 +1,25 @@
 #!/bin/bash
 
-# Start Ollama server in the background
+# Define the URL to download ollama.exe from GitHub
+OLLAMA_URL="https://github.com/mwaqaskhan2002/Ollama-FastAPI/releases/download/v0.4.4/ollama.exe"
+
+# Download ollama.exe if it doesn't exist
+if [ ! -f "ollama.exe" ]; then
+  echo "Downloading ollama.exe..."
+  curl -L -o ollama.exe $OLLAMA_URL
+fi
+
+# Start Ollama server
 echo "Starting Ollama server..."
-ollama serve &
+./ollama.exe serve &
 
-# Store the PID of the Ollama server
-ollama_pid=$!
-
-# Wait for the Ollama server to initialize
-echo "Waiting for Ollama server to start..."
+# Wait for Ollama server to start
 sleep 5
-echo "Ollama server started."
 
-# Pull the model (no check for existence)
+# Pull the model
 echo "Pulling model llama3.2..."
-ollama pull llama3.2
+./ollama.exe pull llama3.2
 
 # Start FastAPI
 echo "Starting FastAPI..."
 uvicorn main:app --host 0.0.0.0 --port 8080
-
-# Wait for Ollama server process to finish before exiting
-wait $ollama_pid
