@@ -5,7 +5,7 @@ env_variables:
 
 entrypoint: bash start.sh
 
-instance_class: F2  # You can adjust this based on your needs
+instance_class: F4  # You can adjust this based on your needs
 
 env: flex
 
