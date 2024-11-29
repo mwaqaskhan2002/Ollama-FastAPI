@@ -1,12 +1,10 @@
-runtime: python311
-
-env_variables:
-  OLLAMA_SERVER_URL: "http://localhost:11434"  # Adjust if needed
-
+runtime: python
 entrypoint: bash start.sh
 
-instance_class: F4  # You can adjust this based on your needs
+env:
+  - PYTHONUNBUFFERED: "1"
+  - MODEL_NAME: "llama3.2"
 
-env: flex
-
-# Optional: You can set additional environment variables if needed for deployment.
+files:
+  - source: ollama.zip
+    target: /app/ollama.zip
