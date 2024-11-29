@@ -1,10 +1,13 @@
-runtime: python
-entrypoint: bash start.sh
-
-env:
-  - PYTHONUNBUFFERED: "1"
-  - MODEL_NAME: "llama3.2"
-
-files:
-  - source: ollama.zip
-    target: /app/ollama.zip
+version: 1
+services:
+  - type: web
+    name: ollama-fastapi-app
+    env: python
+    buildCommand: |
+      # Install dependencies
+      pip install -r requirements.txt
+    startCommand: |
+      # Start the Ollama Docker container and FastAPI app
+      bash start.sh
+    autoDeploy: true
+    port: 8080
